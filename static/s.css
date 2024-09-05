@@ -1,0 +1,221 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background: radial-gradient(circle, #000429 0%, #02040F 100%);
+    color: white;
+    overflow-x: hidden;
+}
+
+header, section, footer {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #FFD700;
+    text-transform: uppercase;
+}
+
+p, ul {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Solar System Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('https://www.solarsystemscope.com/images/spacemaps/8k_stars_milky_way.jpg') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+/* Solar System Overview */
+.solar-system-overview {
+    background: linear-gradient(to bottom, #1e1e40, #060618);
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+/* Planets Styling */
+.planets {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.planet {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+}
+
+.planet:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.planet::before {
+    content: attr(data-planet-name);
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.planet:hover::before {
+    opacity: 1;
+}
+
+/* Orbit Animations */
+.planet.mercury {
+    animation: orbit-mercury 10s linear infinite;
+}
+
+.planet.venus {
+    animation: orbit-venus 15s linear infinite;
+}
+
+.planet.earth {
+    animation: orbit-earth 20s linear infinite;
+}
+
+.planet.mars {
+    animation: orbit-mars 25s linear infinite;
+}
+
+.planet.jupiter {
+    animation: orbit-jupiter 30s linear infinite;
+}
+
+.planet.saturn {
+    animation: orbit-saturn 35s linear infinite;
+}
+
+.planet.uranus {
+    animation: orbit-uranus 40s linear infinite;
+}
+
+.planet.neptune {
+    animation: orbit-neptune 45s linear infinite;
+}
+
+@keyframes orbit-mercury {
+    0% { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
+@keyframes orbit-venus {
+    0% { transform: rotate(0deg) translateX(70px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(70px) rotate(-360deg); }
+}
+
+@keyframes orbit-earth {
+    0% { transform: rotate(0deg) translateX(90px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
+}
+
+@keyframes orbit-mars {
+    0% { transform: rotate(0deg) translateX(110px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
+}
+
+@keyframes orbit-jupiter {
+    0% { transform: rotate(0deg) translateX(140px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
+}
+
+@keyframes orbit-saturn {
+    0% { transform: rotate(0deg) translateX(170px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(170px) rotate(-360deg); }
+}
+
+@keyframes orbit-uranus {
+    0% { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+}
+
+@keyframes orbit-neptune {
+    0% { transform: rotate(0deg) translateX(230px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(230px) rotate(-360deg); }
+}
+
+/* Tooltip Styling for Facts */
+.planet ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    list-style: none;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 1rem;
+    border-radius: 10px;
+    width: 200px;
+    pointer-events: none;
+}
+
+.planet:hover ul {
+    opacity: 1;
+}
+
+/* Moons and Other Objects */
+.moons, .solar-system-objects {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .planet {
+        width: 100px;
+        height: 100px;
+    }
+
+    .planet ul {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+
+    .planet {
+        width: 80px;
+        height: 80px;
+    }
+
+    .planet ul {
+        width: 120px;
+    }
+}
