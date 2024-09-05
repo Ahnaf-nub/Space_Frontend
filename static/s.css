@@ -1,8 +1,8 @@
 /* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Press Start 2P', cursive;
     margin: 0;
-    background: radial-gradient(circle, #000429 0%, #02040F 100%);
+    background: radial-gradient(circle, #00031a 0%, #02040F 100%);
     color: white;
     overflow-x: hidden;
 }
@@ -12,8 +12,18 @@ header, section, footer {
     margin: 2rem auto;
 }
 
+
+section, header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; /* Stacks elements vertically */
+    margin: 0 auto;
+    width: 100%;
+}
+
 h1, h2, h3 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Press Start 2P', cursive;
     color: #FFD700;
     text-transform: uppercase;
 }
@@ -46,6 +56,7 @@ body::before {
 
 /* Planets Styling */
 .planets {
+    margin-top: 2rem;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -74,7 +85,7 @@ body::before {
 .planet::before {
     content: attr(data-planet-name);
     position: absolute;
-    bottom: -20px;
+    bottom: -30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 1.2rem;
