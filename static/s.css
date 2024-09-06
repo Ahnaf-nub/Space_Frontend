@@ -12,12 +12,12 @@ header, section, footer {
     margin: 2rem auto;
 }
 
-
+/* Corrected to stack elements vertically */
 section, header {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row; /* Stacks elements vertically */
+    flex-direction: column; /* Stacks elements vertically */
     margin: 0 auto;
     width: 100%;
 }
@@ -26,6 +26,7 @@ h1, h2, h3 {
     font-family: 'Press Start 2P', cursive;
     color: #FFD700;
     text-transform: uppercase;
+    margin: 0; /* Remove extra margins */
 }
 
 p, ul {
@@ -71,25 +72,27 @@ body::before {
     width: 150px;
     height: 150px;
     position: relative;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
     overflow: hidden;
     text-align: center;
     cursor: pointer;
+    z-index: 1;  /* Ensures planet stays above others */
 }
 
 .planet:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);  /* Reduce scaling to prevent distortion */
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    z-index: 10;  /* Bring hovered planet to the front */
 }
 
 .planet::before {
     content: attr(data-planet-name);
     position: absolute;
-    bottom: -30px;
+    top: 100%;  /* Position tooltip just below the planet */
     left: 50%;
     transform: translateX(-50%);
     font-size: 1.2rem;
-    color: white;
+    color: #FFD700;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
@@ -97,6 +100,7 @@ body::before {
 .planet:hover::before {
     opacity: 1;
 }
+
 
 /* Orbit Animations */
 .planet.mercury {
