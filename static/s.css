@@ -5,6 +5,7 @@ body {
     background: radial-gradient(circle, #00031a 0%, #02040F 100%);
     color: white;
     overflow-x: hidden;
+    text-shadow: 2px 2px 0 #000;
 }
 
 header, section, footer {
@@ -12,12 +13,12 @@ header, section, footer {
     margin: 2rem auto;
 }
 
-/* Corrected to stack elements vertically */
+/* Stack elements vertically */
 section, header {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Stacks elements vertically */
+    flex-direction: column;
     margin: 0 auto;
     width: 100%;
 }
@@ -26,7 +27,9 @@ h1, h2, h3 {
     font-family: 'Press Start 2P', cursive;
     color: #FFD700;
     text-transform: uppercase;
-    margin: 0; /* Remove extra margins */
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 5px 4px 0 #000;
 }
 
 p, ul {
@@ -42,10 +45,10 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: url('https://www.solarsystemscope.com/images/spacemaps/8k_stars_milky_way.jpg') no-repeat center center fixed;
+    background: url('/static/milyway.jpg') no-repeat center center fixed;
     background-size: cover;
     z-index: -1;
-    opacity: 0.3;
+    opacity: 0.5; /* Slightly brighter */
 }
 
 /* Solar System Overview */
@@ -53,6 +56,7 @@ body::before {
     background: linear-gradient(to bottom, #1e1e40, #060618);
     padding: 2rem;
     border-radius: 15px;
+    border: 3px solid #FFD700;
 }
 
 /* Planets Styling */
@@ -61,8 +65,33 @@ body::before {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    gap: 2rem;
 }
 
+/* Styling the Sun */
+.planet.sun {
+    background: radial-gradient(circle, #FFD700 40%, #FF8C00 100%);
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 0 15px 10px rgba(255, 215, 0, 0.6);
+    animation: sun-pulse 2s infinite alternate;
+}
+
+@keyframes sun-pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 15px 10px rgba(255, 215, 0, 0.6);
+    }
+    100% {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px 15px rgba(255, 215, 0, 1);
+    }
+}
+
+/* Planets Hover Effects */
 .planet {
     display: inline-block;
     background: rgba(0, 0, 0, 0.8);
@@ -72,35 +101,28 @@ body::before {
     width: 150px;
     height: 150px;
     position: relative;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     overflow: hidden;
     text-align: center;
     cursor: pointer;
-    z-index: 1;  /* Ensures planet stays above others */
+    z-index: 1;
+    box-shadow: 0 0 8px 2px rgba(255, 215, 0, 0.3);
 }
 
 .planet:hover {
-    transform: scale(1.1);  /* Reduce scaling to prevent distortion */
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-    z-index: 10;  /* Bring hovered planet to the front */
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    z-index: 10;
+    animation: planet-shake 0.5s infinite;
 }
 
-.planet::before {
-    content: attr(data-planet-name);
-    position: absolute;
-    top: 100%;  /* Position tooltip just below the planet */
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.2rem;
-    color: #FFD700;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+@keyframes planet-shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-2deg); }
+    100% { transform: rotate(0deg); }
 }
-
-.planet:hover::before {
-    opacity: 1;
-}
-
 
 /* Orbit Animations */
 .planet.mercury {
@@ -190,18 +212,11 @@ body::before {
     border-radius: 10px;
     width: 200px;
     pointer-events: none;
+    font-family: 'Press Start 2P', cursive;
 }
 
 .planet:hover ul {
     opacity: 1;
-}
-
-/* Moons and Other Objects */
-.moons, .solar-system-objects {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 2rem 0;
 }
 
 /* Responsive Styles */
