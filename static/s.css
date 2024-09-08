@@ -55,8 +55,10 @@ body::before {
 .solar-system-overview {
     background: linear-gradient(to bottom, #1e1e40, #060618);
     padding: 2rem;
-    border-radius: 15px;
+    width: 90%;
+    border-radius: 20px;
     border: 3px solid #FFD700;
+    box-shadow: 0 0 20px 10px rgba(255, 217, 0, 0.151);
 }
 
 /* Planets Styling */
@@ -220,6 +222,21 @@ body::before {
 }
 
 /* Responsive Styles */
+@media (max-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+
+    .planet {
+        width: 120px;
+        height: 120px;
+    }
+
+    .planet ul {
+        width: 180px;
+    }
+}
+
 @media (max-width: 768px) {
     body {
         font-size: 14px;
