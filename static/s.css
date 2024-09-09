@@ -48,7 +48,7 @@ body::before {
     background: url('/static/milyway.jpg') no-repeat center center fixed;
     background-size: cover;
     z-index: -1;
-    opacity: 0.5; /* Slightly brighter */
+    opacity: 0.5;
 }
 
 /* Solar System Overview */
@@ -115,7 +115,7 @@ body::before {
     transform: scale(1.2);
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
     z-index: 10;
-    animation: planet-shake 0.5s infinite;
+    animation: planet-shake 0.3s infinite;
 }
 
 @keyframes planet-shake {
@@ -223,10 +223,6 @@ body::before {
 
 /* Responsive Styles */
 @media (max-width: 1024px) {
-    body {
-        font-size: 16px;
-    }
-
     .planet {
         width: 120px;
         height: 120px;
@@ -235,13 +231,19 @@ body::before {
     .planet ul {
         width: 180px;
     }
+
+    .planet.sun {
+        width: 160px;
+        height: 160px;
+    }
+
+    .solar-system-overview {
+        padding: 1.5rem;
+        width: 95%;
+    }
 }
 
 @media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-
     .planet {
         width: 100px;
         height: 100px;
@@ -250,13 +252,19 @@ body::before {
     .planet ul {
         width: 150px;
     }
+
+    .planet.sun {
+        width: 140px;
+        height: 140px;
+    }
+
+    .solar-system-overview {
+        padding: 1rem;
+        width: 95%;
+    }
 }
 
 @media (max-width: 480px) {
-    body {
-        font-size: 12px;
-    }
-
     .planet {
         width: 80px;
         height: 80px;
@@ -264,5 +272,23 @@ body::before {
 
     .planet ul {
         width: 120px;
+    }
+
+    .planet.sun {
+        width: 100px;
+        height: 100px;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.2rem;
+    }
+
+    p, ul {
+        font-size: 0.9rem;
+    }
+
+    .solar-system-overview {
+        padding: 0.5rem;
+        width: 100%;
     }
 }
